@@ -88,7 +88,12 @@ class _HomePageState extends State<HomePage> {
                 onSubmit: (v){},
                   'Search...',
                   Icons.gamepad,
-                  onChange: (String query) =>  _scrollController.scrollTo(index: int.parse(query), duration: const Duration(seconds: 1)),
+                  onChange: (String query){  
+                    if(query.isNotEmpty && int.tryParse(query)!=null){
+                      _scrollController.scrollTo(index: int.parse(query), duration: const Duration(seconds: 1));
+                    }
+                    
+                  },
                   onClear: () => _scrollController.scrollTo(index: indexPosition, duration: const Duration(seconds: 1)),
               ),
             ),
